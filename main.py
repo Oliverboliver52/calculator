@@ -7,6 +7,7 @@ class Window:
 
         self.operation = ""
         self.output = tk.Label(self.root,text="Output")
+        self.prevAns = 0
         self.buttons = {
             'one' : tk.Button(self.root,text="1",command=lambda: self.add('1')),
             'two': tk.Button(self.root, text="2", command=lambda: self.add('2')),
@@ -23,7 +24,11 @@ class Window:
             'add': tk.Button(self.root, text="+", command=lambda: self.add('+')),
             'subtract': tk.Button(self.root, text="-",command=lambda: self.add("-")),
             'equals': tk.Button(self.root, text="=", command=lambda: self.result()),
-            'AC': tk.Button(self.root, text="AC",command=lambda: self.restart())
+            'AC': tk.Button(self.root, text="AC",command=lambda: self.restart()),
+            'dot': tk.Button(self.root,text=".",command=lambda: self.add('.')),
+            'brackets1': tk.Button(self.root,text="(",command=lambda: self.add('(')),
+            'brackets2': tk.Button(self.root, text=")",command=lambda: self.add(')')),
+            'ANS': tk.Button(self.root,text="Ans",command=lambda: self.add(f'{str(self.prevAns)}'))
         }
         x = 0
         y = 1
@@ -42,9 +47,13 @@ class Window:
         self.buttons['subtract'].grid(row=4,column=3)
         self.buttons['equals'].grid(row=4,column=2)
         self.buttons['AC'].grid(row=0,column=3)
+        self.buttons['dot'].grid(row=4,column=1)
+        self.buttons['brackets1'].grid(row=1,column=4)
+        self.buttons['brackets2'].grid(row=1,column=5)
+        self.buttons['ANS'].grid(row=2,column=4)
     def result(self):
-        print(eval(self.operation))
-        self.output.config(text=str(eval(self.operation)))
+        self.prevAns = eval(self.operation)
+        self.output.config(text=str(self.prevAns))
     def add(self,c):
         self.operation += c
         self.output.config(text=self.operation)
