@@ -57,7 +57,7 @@ class Window:
         self.output.config(text=str(self.prevAns))
     def add(self,c):
         self.operation += c
-        self.output.config(text=self.operation)
+        self.output.config(text=str(self.operation.replace("*","x")))
     def restart(self):
         self.operation = ""
         print(f'Restart - {self.operation}')
