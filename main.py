@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import ttk
 
 class Window:
     def __init__(self):
@@ -9,26 +10,26 @@ class Window:
         self.output = tk.Label(self.root,text="Output")
         self.prevAns = 0
         self.buttons = {
-            'one' : tk.Button(self.root,text="1",command=lambda: self.add('1')),
-            'two': tk.Button(self.root, text="2", command=lambda: self.add('2')),
-            'three': tk.Button(self.root, text="3", command=lambda: self.add('3')),
-            'four': tk.Button(self.root, text="4", command=lambda: self.add('4')),
-            'five': tk.Button(self.root, text="5", command=lambda: self.add('5')),
-            'six': tk.Button(self.root, text="6", command=lambda: self.add('6')),
-            'seven': tk.Button(self.root, text="7", command=lambda: self.add('7')),
-            'eight': tk.Button(self.root, text="8", command=lambda: self.add('8')),
-            'nine': tk.Button(self.root, text="9", command=lambda: self.add('9')),
-            'zero': tk.Button(self.root, text="0", command=lambda: self.add('0')),
-            'times': tk.Button(self.root, text="x", command=lambda: self.add('*')),
-            'divide': tk.Button(self.root, text="/", command=lambda: self.add('/')),
-            'add': tk.Button(self.root, text="+", command=lambda: self.add('+')),
-            'subtract': tk.Button(self.root, text="-",command=lambda: self.add("-")),
-            'equals': tk.Button(self.root, text="=", command=lambda: self.result()),
-            'AC': tk.Button(self.root, text="AC",command=lambda: self.restart()),
-            'dot': tk.Button(self.root,text=".",command=lambda: self.add('.')),
-            'brackets1': tk.Button(self.root,text="(",command=lambda: self.add('(')),
-            'brackets2': tk.Button(self.root, text=")",command=lambda: self.add(')')),
-            'ANS': tk.Button(self.root,text="Ans",command=lambda: self.add(f'{str(self.prevAns)}'))
+            'one' : ttk.Button(self.root,text="1",command=lambda: self.add('1')),
+            'two': ttk.Button(self.root, text="2", command=lambda: self.add('2')),
+            'three': ttk.Button(self.root, text="3", command=lambda: self.add('3')),
+            'four': ttk.Button(self.root, text="4", command=lambda: self.add('4')),
+            'five': ttk.Button(self.root, text="5", command=lambda: self.add('5')),
+            'six': ttk.Button(self.root, text="6", command=lambda: self.add('6')),
+            'seven': ttk.Button(self.root, text="7", command=lambda: self.add('7')),
+            'eight': ttk.Button(self.root, text="8", command=lambda: self.add('8')),
+            'nine': ttk.Button(self.root, text="9", command=lambda: self.add('9')),
+            'zero': ttk.Button(self.root, text="0", command=lambda: self.add('0')),
+            'times': ttk.Button(self.root, text="x", command=lambda: self.add('*')),
+            'divide': ttk.Button(self.root, text="/", command=lambda: self.add('/')),
+            'add': ttk.Button(self.root, text="+", command=lambda: self.add('+')),
+            'subtract': ttk.Button(self.root, text="-",command=lambda: self.add("-")),
+            'equals': ttk.Button(self.root, text="=", command=lambda: self.result()),
+            'AC': ttk.Button(self.root, text="AC",command=lambda: self.restart()),
+            'dot': ttk.Button(self.root,text=".",command=lambda: self.add('.')),
+            'brackets1': ttk.Button(self.root,text="(",command=lambda: self.add('(')),
+            'brackets2': ttk.Button(self.root, text=")",command=lambda: self.add(')')),
+            'ANS': ttk.Button(self.root,text="Ans",command=lambda: self.add(f'{str(self.prevAns)}'))
         }
         x = 0
         y = 1
