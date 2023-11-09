@@ -27,7 +27,7 @@ class Window:
             'equals': ttk.Button(self.root, text="=", command=lambda: self.result()),
             'AC': ttk.Button(self.root, text="AC",command=lambda: self.restart()),
             'dot': ttk.Button(self.root,text=".",command=lambda: self.add('.')),
-            'brackets1': ttk.Button(self.root,text="(",command=lambda: self.add('(')),
+            'brackets1': ttk.Button(self.root,text="(",command=lambda: self.add('*(')),
             'brackets2': ttk.Button(self.root, text=")",command=lambda: self.add(')')),
             'ANS': ttk.Button(self.root,text="Ans",command=lambda: self.add(f'{str(self.prevAns)}'))
         }
@@ -53,11 +53,12 @@ class Window:
         self.buttons['brackets2'].grid(row=1,column=5)
         self.buttons['ANS'].grid(row=2,column=4)
     def result(self):
+        print(self.operation)
         self.prevAns = eval(self.operation)
         self.output.config(text=str(self.prevAns))
     def add(self,c):
         self.operation += c
-        self.output.config(text=str(self.operation.replace("*","x")))
+        self.output.config(text=str(self.operation.replace("*","x").replace("x(","(")))
     def restart(self):
         self.operation = ""
         print(f'Restart - {self.operation}')
