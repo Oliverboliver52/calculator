@@ -27,9 +27,10 @@ class Window:
             'equals': ttk.Button(self.root, text="=", command=lambda: self.result()),
             'AC': ttk.Button(self.root, text="AC",command=lambda: self.restart()),
             'dot': ttk.Button(self.root,text=".",command=lambda: self.add('.')),
-            'brackets1': ttk.Button(self.root,text="(",command=lambda: self.add('*(')),
+            'brackets1': ttk.Button(self.root,text="(",command=lambda:self.determinebrackets()),#command=lambda: self.add('*(')),
             'brackets2': ttk.Button(self.root, text=")",command=lambda: self.add(')')),
-            'ANS': ttk.Button(self.root,text="Ans",command=lambda: self.add(f'{str(self.prevAns)}'))
+            'ANS': ttk.Button(self.root,text="Ans",command=lambda: self.add(f'{str(self.prevAns)}')),
+            'DEL': ttk.Button(self.root,text="Del",command=lambda:self.remove())
         }
         x = 0
         y = 1
@@ -52,16 +53,27 @@ class Window:
         self.buttons['brackets1'].grid(row=1,column=4)
         self.buttons['brackets2'].grid(row=1,column=5)
         self.buttons['ANS'].grid(row=2,column=4)
+        self.buttons['DEL'].grid(row=0,column=4)
     def result(self):
-        print(self.operation)
         self.prevAns = eval(self.operation)
         self.output.config(text=str(self.prevAns))
+    def remove(self):
+        newstring = self.operation[:len(self.operation)-1]
+        print(newstring)
+        self.operation = newstring
+        self.output.config(text=str(self.operation.replace("*","x").replace("x(","(")))
+    def determinebrackets(self):
+        try:
+            if list(self.operation)[len(self.operation)-2] in ["1","2","3","4","5","6","7","8","9","0"]:
+                self.add("*(")
+                return
+        except:
+            self.add("(")
     def add(self,c):
         self.operation += c
         self.output.config(text=str(self.operation.replace("*","x").replace("x(","(")))
     def restart(self):
         self.operation = ""
-        print(f'Restart - {self.operation}')
         self.output.config(text=self.operation)
 W = Window()
 tk.mainloop()
